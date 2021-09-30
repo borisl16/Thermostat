@@ -68,8 +68,6 @@ describe('Thermostat', () => {
 
     });
 
-    // spec/thermostatSpec.js
-
     describe('displaying usage levels', () => { 
         describe('when the temperature is below 18 degrees', () => {
             it('it is considered low-usage', () => {
