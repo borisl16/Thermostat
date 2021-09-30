@@ -1,33 +1,37 @@
 document.addEventListener("DOMContentLoaded", () =>  {
-    const thermostat = new Thermostat();
-    document.querySelector('#temperature').innerText = thermostat.temperature
-})
+    const updateTemperature = () => {
+    document.querySelector('#temperature').innerText = thermostat.temperature;
+    document.querySelector('#temperature').className = thermostat.energyUsage();
+  }
 
 const thermostat = new Thermostat();
+updateTemperature();
 
 document.querySelector('#temperature-up').addEventListener('click', () => { 
-    thermostat.up(); 
-    document.querySelector('#temperature').innerText = thermostat.temperature; 
+  thermostat.up(); 
+  updateTemperature(); 
 })
 
 document.querySelector('#temperature-down').addEventListener('click', () => { 
-    thermostat.down(); 
-    document.querySelector('#temperature').innerText = thermostat.temperature; 
+  thermostat.down(); 
+  updateTemperature();
 })
 
 document.querySelector('#temperature-reset').addEventListener('click', () => { 
   thermostat.resetTemperature(); 
-  document.querySelector('#temperature').innerText = thermostat.temperature; 
+  updateTemperature(); 
 })
 
 document.querySelector('#powersaving-off').addEventListener('click', () => { 
   thermostat.switchPowerSavingModeOff(); 
-  document.querySelector('#temperature').innerText = thermostat.temperature; 
   document.querySelector('#power-saving-status').innerText = 'off'
+  updateTemperature();
 })
 
 document.querySelector('#powersaving-on').addEventListener('click', () => { 
   thermostat.switchPowerSavingModeOn(); 
-  document.querySelector('#temperature').innerText = thermostat.temperature; 
   document.querySelector('#power-saving-status').innerText = 'on'
+  updateTemperature();
 })
+});
+
